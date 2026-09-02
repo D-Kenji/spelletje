@@ -11,6 +11,7 @@ function playGame(){
         const computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
         scoreText.textContent = humanScore + " - " + computerScore;
+        playButton.focus();
    }
 
 function playRound(humanChoice, computerChoice){
