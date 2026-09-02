@@ -18,15 +18,20 @@ function playGame(choice){
 function playRound(humanChoice, computerChoice){
     if(humanChoice-computerChoice===-1 || humanChoice-computerChoice===2){
         computerScore++;
-        winnerText.textContent = "De computer wint!";
     } else if(humanChoice-computerChoice===1 || humanChoice-computerChoice===-2){
         humanScore++;
-       winnerText.textContent = "Jij wint!";
     } else {
-        winnerText.textContent = "Gelijkspel";
     }
     scoreText.textContent = humanScore + " - " + computerScore;
-    checkWinner();
+    if(humanScore == 5){
+        winnerText.textContent = "Jij wint!";
+        humanScore = 0;
+        computerScore = 0;
+    } else if(computerScore == 5){
+        winnerText.textContent = "De computer wint!";
+        humanScore = 0;
+        computerScore = 0;
+    }
 }
 
 function getHumanChoice(choice){
@@ -55,17 +60,6 @@ function getComputerChoice(){
     
 }
 
-function checkWinner(){
-    if(humanScore == 5){
-        alert("Jij heb het spel gewonnen!")
-        humanScore = 0;
-        computerScore = 0;
-    } else if(computerScore == 5){
-        alert("De computer heeft het spel gewonnen!");
-        humanScore = 0;
-        computerScore = 0;
-    }
-}
 
 
 
