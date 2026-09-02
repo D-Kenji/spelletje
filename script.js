@@ -1,17 +1,19 @@
 let humanScore = 0;
 let computerScore = 0;
-const playButton = document.querySelector("#playGame");
+const keuzeDiv = document.querySelector(".keuze");
+const schaarButton = document.querySelector("#schaar");
+const steenButton = document.querySelector("#steen");
+const bladButton = document.querySelector("#blad");
 const scoreText = document.querySelector("#score");
 const winnerText = document.querySelector("#winner");
 
-playButton.addEventListener("click", playGame);
+keuzeDiv.addEventListener("click", (event) => playGame(event.target.value));
 
-function playGame(){
-        const humanChoice = getHumanChoice();
+function playGame(choice){
+        const humanChoice = getHumanChoice(choice);
         const computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
         scoreText.textContent = humanScore + " - " + computerScore;
-        playButton.focus();
    }
 
 function playRound(humanChoice, computerChoice){
@@ -26,11 +28,11 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-function getHumanChoice(){
-    let choice = prompt("Kies Blad, Steen of Schaar").toLowerCase();
-    if(choice === "blad"){
+function getHumanChoice(choice){
+    let input = choice.toLowerCase();
+    if(input === "blad"){
         return 1;
-    } else if (choice === "schaar"){
+    } else if (input === "schaar"){
         return 2
     } else {
         return 3
