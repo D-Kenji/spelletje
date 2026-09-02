@@ -6,14 +6,13 @@ const steenButton = document.querySelector("#steen");
 const bladButton = document.querySelector("#blad");
 const scoreText = document.querySelector("#score");
 const winnerText = document.querySelector("#winner");
-
+const robotKeuze = document.querySelector("#robotKeuze");
 keuzeDiv.addEventListener("click", (event) => playGame(event.target.value));
 
 function playGame(choice){
         const humanChoice = getHumanChoice(choice);
         const computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
-        scoreText.textContent = humanScore + " - " + computerScore;
    }
 
 function playRound(humanChoice, computerChoice){
@@ -26,6 +25,8 @@ function playRound(humanChoice, computerChoice){
     } else {
         winnerText.textContent = "Gelijkspel";
     }
+    scoreText.textContent = humanScore + " - " + computerScore;
+    checkWinner();
 }
 
 function getHumanChoice(choice){
@@ -42,18 +43,29 @@ function getHumanChoice(choice){
 function getComputerChoice(){
     let choice = Math.random();
     if(choice <= 0.33){
-        console.log("Computer kiest steen");
+        robotKeuze.textContent = "Computer kiest steen";
         return 3;
     } else if(choice > 0.33 && choice < 0.66){
-        console.log("Computer kiest schaar");
+        robotKeuze.textContent = "Computer kiest schaar";
         return 2;
     } else {
-        console.log("Computer kiest blad");
+        robotKeuze.textContent = "Computer kiest blad";
         return 1;
     }
     
 }
 
+function checkWinner(){
+    if(humanScore == 5){
+        alert("Jij heb het spel gewonnen!")
+        humanScore = 0;
+        computerScore = 0;
+    } else if(computerScore == 5){
+        alert("De computer heeft het spel gewonnen!");
+        humanScore = 0;
+        computerScore = 0;
+    }
+}
 
 
 
