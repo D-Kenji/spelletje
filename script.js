@@ -1,17 +1,11 @@
 let humanScore = 0;
 let computerScore = 0;
-playGame();
+const playButton = document.querySelector("#playGame");
 
-function playGame(rounds = prompt("Choose how many rounds you want to play.")){
-    let currentRound = 1;
-    for(let i = 1; i <= rounds; i++){
+function playGame(){
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
-        rounds.toString;
-        console.log("Ronde " + currentRound + "/" + rounds);
-        currentRound += 1;
-        
         console.log(humanScore + " - " + computerScore);
    }
 }
