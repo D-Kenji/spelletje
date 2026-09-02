@@ -1,24 +1,27 @@
 let humanScore = 0;
 let computerScore = 0;
 const playButton = document.querySelector("#playGame");
+const scoreText = document.querySelector("#score");
+const winnerText = document.querySelector("#winner");
+
+playButton.addEventListener("click", playGame);
 
 function playGame(){
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
-        console.log(humanScore + " - " + computerScore);
+        scoreText.textContent = humanScore + " - " + computerScore;
    }
-}
 
 function playRound(humanChoice, computerChoice){
     if(humanChoice-computerChoice===-1 || humanChoice-computerChoice===2){
         computerScore++;
-        return console.log("De computer wint!");
+        winnerText.textContent = "De computer wint!";
     } else if(humanChoice-computerChoice===1 || humanChoice-computerChoice===-2){
         humanScore++;
-       return console.log("Jij wint!");
+       winnerText.textContent = "Jij wint!";
     } else {
-        return console.log("Gelijkspel");
+        winnerText.textContent = "Gelijkspel";
     }
 }
 
